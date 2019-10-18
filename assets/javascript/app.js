@@ -12,12 +12,13 @@ $(document).ready(function () {
             question: "Who was the first Disney princess?",
             answers: ["Snow White", "Ariel", "Cinderella", "Belle"],
             correctAnswer: "Snow White",
-            image: "assets/images/snow-white.gif"
+            image: "assets/images/snow-white.gif",
+            //audio: "snowWhite.play();"
         },
         {
             question: "What are the names of Cinderella's evil stepsisters?",
-            answers: ["Anastasia and Drizella", "Beatrice and Daphine", "Drizella and Beatrice", "Daphine and Anastasia"],
-            correctAnswer: "Anastasia and Drizella",
+            answers: ["Anastasia & Drizella", "Beatrice & Daphine", "Drizella & Beatrice", "Daphine & Anastasia"],
+            correctAnswer: "Anastasia & Drizella",
             image: "assets/images/cinderella-evil-stepsisters.gif"
         },
         {
@@ -62,12 +63,12 @@ $(document).ready(function () {
             correctAnswer: "Dinglehopper",
             image: "assets/images/ariel-brushing-hair-with-fork.gif"
         },
-        /*    {
-               question: "What kind of ride did Aladdin take Princess Jasmine on?",
-               answers: ["magic camel ride", "magic horse ride", "magic carpet ride", "magic blanket ride"],
-               correctAnswer: "magic carpet ride",
-               image: "assets/images/aladdin-magic-carpet-ride.gif"
-           }, */
+        /* {
+            question: "What kind of ride did Aladdin take Princess Jasmine on?",
+            answers: ["magic camel ride", "magic horse ride", "magic carpet ride", "magic blanket ride"],
+            correctAnswer: "magic carpet ride",
+            image: "assets/images/aladdin-magic-carpet-ride.gif"
+        } */
         {
             question: "Who is the only Disney princess with a tattoo?",
             answers: ["Jasmine", "Pocahontas", "Mulan", "Elsa"],
@@ -145,7 +146,7 @@ $(document).ready(function () {
         card.append("<h3>Correct Answers: " + correct + "</h3>");
         card.append("<h3>Incorrect Answers: " + incorrect + "</h3>");
         card.append("<h3>Unanswered: " + (questions.length - (incorrect + correct)) + "</h3>");
-        card.append("<br><button id='start-over'>Click Here To Play Again!</button>");
+        card.append("<br><button id='start-over'>Click To Play Again!</button>");
     };
 
     //This function determines if the player clicked on the correct answer or not
@@ -196,11 +197,11 @@ $(document).ready(function () {
         }
     };
 
-    let snowWhite;
-
-    function sound() {
-        snowWhite = loadSound("");
-    }
+    /*  let snowWhite;
+ 
+     function sound() {
+         snowWhite = loadSound("(snow-white-vocalizing-with-the-birds) (4).mp3");
+     } */
 
 
     //This function resets the game

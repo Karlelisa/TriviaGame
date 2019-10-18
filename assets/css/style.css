@@ -1,7 +1,7 @@
-html,
+/* html,
 body {
   height: 100%;
-} 
+} */ 
 
 /*  body {
   text-align: center;
@@ -11,32 +11,58 @@ body {
   height: 400%;
 } */ 
 
-body {
+/* body {
     text-align: center;
-    background-image: url("../images/Disney-collage\ \(2\).jpg"), url("../images/Disney-collage\ \(2\).jpg") ; 
+    background-image: url("../images/Disney-collage\ \(2\).jpg"), url("../images/Disney-collage\ \(2\).jpg") ;  */
      /* background-image: url("../images/pocahontas-waving.gif"), url("../images/belle-moving-hair.gif") ;      */
-     background-position: left, right;
+   /*   background-position: left, right;
     background-repeat: no-repeat, no-repeat; 
     height: 400%;
   } 
-
-#container {
+ */
+/* #container {
   width: 1195px;
   height: 20%;
   box-sizing: border-box;
   /* margin: 2.5% auto; */
-  margin-top: 3%;
+/*   margin-top: 3%;
   margin-left: 190px;
   margin-right: 250px;
-  background-color: rgb(45, 79, 143);
+  background-color: rgb(45, 79, 143); */
   /* background-color: rgb(27, 72, 156);  */
    /* background-color: rgb(44, 44, 204);  */
-  border: 2px solid white;
-}
-
+/*   border: 2px solid white;
+} */ 
+/* 
 .disney-title{
     padding-left: 50px;
+} */
+
+/* img {
+  height: 200px;
+} */ 
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 35px;
+  color:black;
 }
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 25px;
+  color: black;
+}
+
+.card-body{
+  text-align: center;
+  background-color: rgb(133, 177, 192);
+  /* background-color: rgb(45, 79, 143); */
+  height: 160%;
+
+} 
+
 
 #quiz-box {
   position: relative;
@@ -52,10 +78,14 @@ button {
   cursor: pointer;
   background: transparent;
   border: 0;
+  background-color: palevioletred;
+  border: 2px solid white;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 button:hover {
-  background: lightblue;
+  background: rgb(197, 225, 235);
   /* border: 3px solid purple; */
   border-radius: 60%;
 }
@@ -65,13 +95,17 @@ button:focus {
 }
 
 #start {
-  margin-top: 10%;
+  margin-top: 20%;
   background: white;
   border: 3px solid palevioletred;
 }
 
-img {
-  height: 200px;
+
+
+
+/* The Footer*/
+.fixed-bottom {
+  background-color:  lightsteelblue;
 }
 
 /* h1 {
@@ -82,17 +116,7 @@ img {
   color: blue;
 } */
 
-h2 {
-  margin-bottom: 5px;
-  font-size: 35px;
-  color: white;
-}
 
-h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: black;
-}
 
 
 
