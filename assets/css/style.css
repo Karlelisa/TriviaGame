@@ -1,7 +1,9 @@
 
-/* img {
-  height: 200px;
-} */ 
+ img {
+  border-radius: 10%;
+  box-shadow: 0 0 10px 4px;
+}  
+
 
 h2 {
   margin-top: 20px;
@@ -19,14 +21,11 @@ h3 {
 
 .card-body{
   text-align: center;
-  /* background-color: rgb(133, 177, 192); */
-  background-color: rgb(45, 79, 143);
+  background-color: rgb(45, 79, 143); 
   height: 100%;
-  border: 2px solid white; 
-  
-  
+  width: 100%;
+  box-shadow: 0 0 5px 4px;
 } 
-
 
 #quiz-box {
   position: relative;
@@ -49,6 +48,7 @@ button {
   border-radius: 7px;
 }
 
+
 button:hover {
   background: rgb(197, 225, 235);
   border-radius: 60%;
@@ -62,26 +62,24 @@ button:focus {
   margin-top: 20%;
   background: white;
   border: 3px solid palevioletred;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
   border-radius: 7px;
   box-shadow: 0 0 20px 4px;
 }
 
 #start:hover {
   background: rgb(197, 225, 235);
-  /* border-radius: 60%; */
   border: 3px solid white;
 }
 
 .size-image{
-  height: 200px;
+  height: 300px;
 }
 
 
 /* The Footer*/
 .fixed-bottom {
 background-color: pink;
+box-shadow: 5px 0px 4px 0px;
 }
 
 

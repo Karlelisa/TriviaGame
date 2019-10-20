@@ -11,8 +11,7 @@ $(document).ready(function () {
             question: "Who was the first Disney princess?",
             answers: ["Snow White", "Ariel", "Cinderella", "Belle"],
             correctAnswer: "Snow White",
-            image: "assets/images/snow-white.gif",
-            //audio: "snowWhite.play();"
+            image: "assets/images/snow-white-dancing.gif",
         },
         {
             question: "What are the names of Cinderella's evil stepsisters?",
@@ -70,8 +69,7 @@ $(document).ready(function () {
         }
     ];
 
-    $("questions.image").addClass("size-image");
-    // $("h1:first").addClass("size-image"); 
+
 
     // Setting variables
     let game = $("#quiz");
@@ -86,12 +84,12 @@ $(document).ready(function () {
     let correct = 0;
     let incorrect = 0;
 
+    //Cited: https://harvard.bootcampcontent.com/Harvard-Coding-Boot-Camp/hu-cam-fsf-pt-09-2019-u-c/blob/master/javascript-cheatsheet/intervals-timeouts.js
     //This is the time countdown function. It decreases the time. Once the time get to zero, the times up function displays
     function countdownTime() {
         timeCount--;
         $("#timeCount-number").text(timeCount);
         if (timeCount === 0) {
-            //console.log("TIME UP");
             timesUp();
         }
     };
@@ -126,7 +124,7 @@ $(document).ready(function () {
 
         game.html("<h2>Out of Time!!</h2>");
         game.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer);
-        game.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.append("<img src='" + questions[currentQuestion].image + "'/>");
 
         if (currentQuestion === questions.length - 1) {
             setTimeout(endResults, 4 * 2000);
@@ -151,7 +149,7 @@ $(document).ready(function () {
         game.append("<h3>Incorrect Answers: " + incorrect + "</h3>");
         game.append("<h3>Unanswered: " + (questions.length - (incorrect + correct)) + "</h3>");
         game.append("<br><button id='start-over'>Click To Play Again!</button>");
-        game.append("<img src= 'assets/images/disney-castle.gif' height='200px' border-radius='8px' />");
+        game.append("<img src= 'assets/images/disney-castle.gif' height='200px' />");
     };
 
     //This function determines if the player clicked on the correct answer or not
@@ -174,7 +172,7 @@ $(document).ready(function () {
 
         game.html("<h2>Wrong!! But don't worry. Hakuna Matata!!</h2>");
         game.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer + "</h3>");
-        game.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.append("<img src='" + questions[currentQuestion].image + "'height='270px'/>");
 
         if (currentQuestion === questions.length - 1) {
             setTimeout(endResults, 4 * 2000);
@@ -192,7 +190,7 @@ $(document).ready(function () {
         correct++;
 
         game.html("<h2>Correct!!</h2>");
-        game.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.append("<img src='" + questions[currentQuestion].image + "' height='270px'/>");
 
         if (currentQuestion === questions.length - 1) {
             setTimeout(endResults, 6000);
@@ -201,12 +199,6 @@ $(document).ready(function () {
             setTimeout(nextQuestion, 6000);
         }
     };
-
-    /*  let snowWhite;
- 
-     function sound() {
-         snowWhite = loadSound("(snow-white-vocalizing-with-the-birds) (4).mp3");
-     } */
 
 
     //This function resets the game
