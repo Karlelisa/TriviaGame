@@ -1,10 +1,9 @@
-//Cited:I used the Trivia Game homework solution as a guideline as well as viewing these videos:
-//For the timer countdown and audio: https://youtu.be/MLtAMg9_Svw
+//Cited:I used the Trivia Game homework solution as a guideline as well as viewing the following:
+//For the timer countdown: https://youtu.be/MLtAMg9_Svw, Quiz App with JavaScript: https://youtu.be/riDzcEQbX6k
+//Cited: https://github.com/soniabradley/Totally-Trivia/blob/master/assets/javascript/app.js
 
 $(document).ready(function () {
 
-    let card = $("#quiz");
-    let setTimeNumber = 30;
 
     // Set of Questions, Answers, correct answers and images
     let questions = [
@@ -63,12 +62,6 @@ $(document).ready(function () {
             correctAnswer: "Dinglehopper",
             image: "assets/images/ariel-brushing-hair-with-fork.gif"
         },
-        /* {
-            question: "What kind of ride did Aladdin take Princess Jasmine on?",
-            answers: ["magic camel ride", "magic horse ride", "magic carpet ride", "magic blanket ride"],
-            correctAnswer: "magic carpet ride",
-            image: "assets/images/aladdin-magic-carpet-ride.gif"
-        } */
         {
             question: "Who is the only Disney princess with a tattoo?",
             answers: ["Jasmine", "Pocahontas", "Mulan", "Elsa"],
@@ -77,56 +70,66 @@ $(document).ready(function () {
         }
     ];
 
+    $("questions.image").addClass("size-image");
+    // $("h1:first").addClass("size-image"); 
+
+    // Setting variables
+    let game = $("#quiz");
+    let setTimeNumber = 15;
+
     // The setInterval variable
     let timer;
 
 
     let currentQuestion = 0;
-    let counter = setTimeNumber;
+    let timeCount = setTimeNumber;
     let correct = 0;
     let incorrect = 0;
 
+    //This is the time countdown function. It decreases the time. Once the time get to zero, the times up function displays
     function countdownTime() {
-        counter--;
-        $("#counter-number").text(counter);
-        if (counter === 0) {
-            console.log("TIME UP");
-            timeUp();
+        timeCount--;
+        $("#timeCount-number").text(timeCount);
+        if (timeCount === 0) {
+            //console.log("TIME UP");
+            timesUp();
         }
     };
 
+    //This function loads the questions and the answers to choose from and sets the timer to decrease every second
     function loadQuestion() {
 
         timer = setInterval(countdownTime, 1000);
 
-        card.html("<h2>" + questions[currentQuestion].question + "</h2>");
+        game.html("<h2>" + questions[currentQuestion].question + "</h2>");
 
         for (let i = 0; i < questions[currentQuestion].answers.length; i++) {
-            card.append("<button class='answer-button' id='button' data-name='" + questions[currentQuestion].answers[i]
+            game.append("<button class='answer-button' id='button' data-name='" + questions[currentQuestion].answers[i]
                 + "'>" + questions[currentQuestion].answers[i] + "</button>");
         }
     };
 
+    //This function adds one question at a time
     function nextQuestion() {
-        counter = setTimeNumber;
-        $("#counter-number").text(counter);
+        timeCount = setTimeNumber;
+        $("#timeCount-number").text(timeCount);
         currentQuestion++;
         loadQuestion();
     };
 
     //This sets the out of time notification showing what the correct answer is and sets how much time the player will view this until the next question populates.
-    function timeUp() {
+    function timesUp() {
 
         clearInterval(timer);
 
-        $("#counter-number").html(counter);
+        $("#timeCount-number").html(timeCount);
 
-        card.html("<h2>Out of Time!!</h2>");
-        card.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer);
-        card.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.html("<h2>Out of Time!!</h2>");
+        game.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer);
+        game.append("<img src='" + questions[currentQuestion].image + "' />");
 
         if (currentQuestion === questions.length - 1) {
-            setTimeout(results, 4 * 2000);
+            setTimeout(endResults, 4 * 2000);
         }
         else {
             setTimeout(nextQuestion, 4 * 2000);
@@ -134,19 +137,21 @@ $(document).ready(function () {
     };
 
 
-    //This function shows the player their results of correct answers, wrong answers, the number of unanswered questions and a play again button and clears the timer = setInterval(countdown, 1000);.
-    function results() {
+    //This function shows the player their endResults of correct answers, wrong answers, the number of unanswered questions and a play again button and clears the timer = setInterval(countdown, 1000);.
+    function endResults() {
 
         clearInterval(timer);
 
-        card.html("<h2>All done, here are your scores!</h2>");
+        game.html("<h2>Game Over! Here are your scores!</h2>");
 
-        $("#counter-number").text(counter);
+        $("#timeCount-number").text(timeCount);
 
-        card.append("<h3>Correct Answers: " + correct + "</h3>");
-        card.append("<h3>Incorrect Answers: " + incorrect + "</h3>");
-        card.append("<h3>Unanswered: " + (questions.length - (incorrect + correct)) + "</h3>");
-        card.append("<br><button id='start-over'>Click To Play Again!</button>");
+        //Cited: https://youtu.be/0ik6X4DJKCc, for DOM Manipulation
+        game.append("<h3>Correct Answers: " + correct + "</h3>");
+        game.append("<h3>Incorrect Answers: " + incorrect + "</h3>");
+        game.append("<h3>Unanswered: " + (questions.length - (incorrect + correct)) + "</h3>");
+        game.append("<br><button id='start-over'>Click To Play Again!</button>");
+        game.append("<img src= 'assets/images/disney-castle.gif' height='200px' border-radius='8px' />");
     };
 
     //This function determines if the player clicked on the correct answer or not
@@ -156,23 +161,23 @@ $(document).ready(function () {
             answeredCorrectly();
         }
         else {
-            answeredIncorrectly();
+            wrongAnswer();
         }
     };
 
     //The function of when the question is answered incorrectly.
-    function answeredIncorrectly() {
+    function wrongAnswer() {
 
         incorrect++;
 
         clearInterval(timer);
 
-        card.html("<h2>Wrong!! But don't worry. Hakuna Matata!!</h2>");
-        card.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer + "</h3>");
-        card.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.html("<h2>Wrong!! But don't worry. Hakuna Matata!!</h2>");
+        game.append("<h3>The Correct Answer was: " + questions[currentQuestion].correctAnswer + "</h3>");
+        game.append("<img src='" + questions[currentQuestion].image + "' />");
 
         if (currentQuestion === questions.length - 1) {
-            setTimeout(results, 4 * 2000);
+            setTimeout(endResults, 4 * 2000);
         }
         else {
             setTimeout(nextQuestion, 4 * 2000);
@@ -186,14 +191,14 @@ $(document).ready(function () {
 
         correct++;
 
-        card.html("<h2>Correct!!</h2>");
-        card.append("<img src='" + questions[currentQuestion].image + "' />");
+        game.html("<h2>Correct!!</h2>");
+        game.append("<img src='" + questions[currentQuestion].image + "' />");
 
         if (currentQuestion === questions.length - 1) {
-            setTimeout(results, 4 * 2000);
+            setTimeout(endResults, 6000);
         }
         else {
-            setTimeout(nextQuestion, 4 * 2000);
+            setTimeout(nextQuestion, 6000);
         }
     };
 
@@ -207,7 +212,7 @@ $(document).ready(function () {
     //This function resets the game
     function reset() {
         currentQuestion = 0;
-        counter = setTimeNumber;
+        timeCount = setTimeNumber;
         correct = 0;
         incorrect = 0;
         loadQuestion();
@@ -227,11 +232,9 @@ $(document).ready(function () {
 
     //When the start button is clicked the game will load
     $(document).on("click", "#start", function () {
-        $("#quiz-box").prepend("<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>");
+        $("#quiz-box").prepend("<h2>Time Remaining: <span id='timeCount-number'>15</span> Seconds</h2>");
         loadQuestion();
     });
-
-
 
 
 });
