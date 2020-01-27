@@ -60,7 +60,7 @@ $(document).ready(function () {
             question: "What country is Belle from in Beauty and the Beast?",
             answers: ["United Kingdom", "France", "Italy", "Swizterland"],
             correctAnswer: "France",
-            image: "assets/images/belle-singing.gif",
+            image: "assets/images/3rd-belle-singing.gif",
             audio: "assets/audio/no-sir-not-me-i-guarantee-it-i-want-much-more-than-this-provincial-life.mp3"
         },
         {
@@ -215,8 +215,6 @@ $(document).ready(function () {
         incorrect = 0;
         loadQuestion();
     };
-
-
 
 
     //At the end of the game when the play again button is clicked, the game will reset
